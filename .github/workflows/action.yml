@@ -8,16 +8,20 @@ jobs:
       - name: Set up Git repository
         uses: actions/checkout@v2
 
+      - name: Clean up LaTeX build files
+        run: |
+          rm -rf *.aux *.bbl *.blg *.log *.out *.toc
+
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
-          root_file: \resume.tex
+          root_file: resume.tex
           latexmk_use_xelatex: true
 
       - name: Upload a file to Google Drive
         uses: willo32/google-drive-upload-action@v1
         with:
-          target: resume.tex
+          target: resume.pdf
           credentials: ${{ secrets.GOOGLE_DRIVE_API_KEY }}
           parent_folder_id: 13_U6kOxWw1plFlxYTozHQ1QgL0-ZaPWb
 
