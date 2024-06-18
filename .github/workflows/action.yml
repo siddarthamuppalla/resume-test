@@ -1,0 +1,29 @@
+name: LaTeX to Google Drive
+on: push
+
+jobs:
+  upload_to_drive:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v2
+
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: resume.tex
+          latexmk_use_xelatex: true
+
+      - name: Upload a file to Google Drive
+        uses: willo32/google-drive-upload-action@v1
+        with:
+          target: resume.tex
+          credentials: ${{ secrets.GOOGLE_DRIVE_API_KEY }}
+          parent_folder_id: 13_U6kOxWw1plFlxYTozHQ1QgL0-ZaPWb
+
+      # - name: Upload to Google Drive
+      #   uses: gdrive-org/upload-action@master
+      #   with:
+      #     serviceAccountKey: ${{ secrets.GOOGLE_DRIVE_API_KEY }}
+      #     source: main.pdf
+      #     destination: /LaTeXDocuments/main.pdf

@@ -1,0 +1,272 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{fontawesome5}
+
+\input{glyphtounicode}
+
+% -------------------- FONT OPTIONS --------------------
+% sans-serif
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% serif
+% \usepackage{charter}
+
+% \pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in} % Default was -.5in
+\addtolength{\textheight}{1in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Section formatting
+\titleformat{\section}{
+  \vspace{-3pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Subsection formatting
+\titleformat{\subsection}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{\hspace{-0.15in}}{0em}{}[\color{black}\vspace{-8pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+% -------------------- CUSTOM COMMANDS --------------------
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{1\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular}{1\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{1\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+\newcommand{\resumeSkillPoint}[2]{
+    \item
+    \begin{tabularx}{0.99\textwidth}{>{\raggedright}p{2.5cm}X}
+        \textbf{#1} & #2 \\
+    \end{tabularx}\vspace{-6pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\setlength{\footskip}{4.08003pt}
+
+% -------------------- START OF DOCUMENT --------------------
+\begin{document}
+
+% -------------------- HEADING--------------------
+\vspace{-8pt}
+
+\begin{center}
+   {\Huge\scshape{Siddartha Muppalla} }\\ \vspace{3pt}
+    \small
+    {\faMapMarker}
+     $  $ Mechanicsburg, PA $  $
+    {\faIcon{phone}}
+    {+1(385)313-5989} $  $
+    {\faIcon{envelope}}
+    \href{mailto:siddartha.muppalla@gmail.com}
+    {\underline{siddartha.muppalla@gmail.com}} $  $
+    {\faIcon{linkedin}}
+    \href{https://linkedin.com/in/siddartha-muppalla}{\underline{siddartha-muppalla}}$  $
+    % {\faIcon{globe}}
+    % \href{https://siddartha-muppalla.netlify.app/}{\underline{Portfolio}} $  $
+            \faIcon{github}
+    \href{https://github.com/siddarthamuppalla}{\underline{siddarthamuppalla}} $  $
+    
+\end{center}
+
+% -------------------- EDUCATION --------------------
+\vspace{-15pt}
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {University of Utah}{\small{Aug 2022 - Dec 2023}}
+      {Master of Science - Information Systems }{GPA: 4.0/4.0}
+      % \vspace{2pt}
+      
+      \small{Relevant Courses:} Java \& Data Structures, Algorithms, System Architecture \& Design, Security, Object-Oriented Programming
+
+  \resumeSubHeadingListEnd
+
+
+ % -------------------- EXPERIENCE --------------------
+ \vspace{-5pt}
+\section{Professional Experience}
+  \resumeSubHeadingListStart
+      \resumeProjectHeading
+      {\textbf{Software Engineer Intern} $|$ \textbf{CognoWiz} $|$\footnotesize\emph{ Herndon, Virginia}\vspace{1pt}}{\small{Dec 2023 – Present}}
+        \resumeItemListStart
+            
+            % \resumeItem{Revamped multi-threading design in .NET MVVM framework, which improved the application’s performance by 40\%.}
+            % \vspace{-12pt}
+ 
+            % \resumeItem{Utilized RESTful web services to retrieve dynamic content from backend databases and crafted new APIs.}
+            % \resumeItem{Developed web applications using Java, Spring Boot, Maven, Kafka, PostgreSQL, and React.js  contributing to the implementation of new features, enhancements and automated test in a test-driven development environment.}
+            \resumeItem{Developed and shipped new features, enhancements and automated tests for web applications using Java, Spring Boot, Maven, Kafka, PostgreSQL, and React.js.}
+            % \resumeItem{Successfully managed the complete lifecycle of various IT applications, ensuring seamless delivery and integration within customer organizations.}
+            
+            \resumeItem{Collaborated with cross-functional teams to establish comprehensive API documentation using Swagger, enhancing clarity and ease of integration for both internal and external stakeholders.}
+            \resumeItem{Led end-to-end development of critical features from architecture to deployment, ensuring seamless integration with existing systems and enhancing overall product functionality.}
+            % \resumeItem{Facilitated seamless integration between internal and external stakeholders by crafting meticulous API documentation with Swagger, reducing integration time by 30\% and enhancing process clarity.}
+            \resumeItem{Skilled in understanding and interpreting complex requirements through effective communication, probing for information, and facilitating consensus among stakeholders.}
+
+            \resumeItem{Enhanced payment processing capabilities through seamless integration of third-party APIs, resulting in a 25\% improvement in checkout conversion rates and a \$50K increase in monthly revenue}
+            
+
+      \resumeItemListEnd
+      
+      \resumeProjectHeading
+      {\textbf{Software Engineer Intern} $|$ \textbf{Oracle} $|$\footnotesize\emph{ Salt Lake City, Utah}\vspace{1pt}}{\small{Jan 2023 – Sep 2023}}
+        \resumeItemListStart
+            \resumeItem{Created a full-stack web application for customer tracking that improved month-on-month revenue by \$2M.}
+            \resumeItem{Employed a tech stack encompassing Node.js, Express, jQuery, React.js, MongoDB, Passport.js and OAuth2.0.}
+            \resumeItem{Developed and maintained project plans, timelines, and budgets for application delivery projects.}
+            % \resumeItem{Designed a scalable and performant database schema in MongoDB for handling millions of records.}
+
+            \resumeItem{Implemented robust authentication and authorization using OAuth, ensuring restricted access to sensitive data.}
+            \resumeItem{Successfully co-led application lifecycle from design to deployment, fostering cross-functional teamwork. }
+            \resumeItem{Established targeted test suites with Jest, resulting in a quantifiable 15\% improvement in code coverage.}
+      \resumeItemListEnd
+          
+    \resumeProjectHeading
+      {\textbf{Software Engineer} $|$ \textbf{Deloitte} $|$ \footnotesize\emph{Hyderabad, India}\vspace{1pt}}{\small{Jun 2021 – Jul 2022}}
+        \resumeItemListStart 
+        
+            \resumeItem{Engineered application backend using Java, Spring Boot, Spring MVC, Spring AOP ensuring high user satisfaction.}
+
+            % \resumeItem{Optimized data flow with Hibernate ORM, reducing query times by 20\% for improved data management.}
+            % \resumeItem{Created spring boot microservices that consumed and processed data from different enterprise applications using SNS/SQS and stored the data in DynamoDB.}
+            \resumeItem{Created spring boot microservices for processing high volumes of transaction data from enterprise applications using SNS/SQS for messaging and DynamoDB for reliable storage, which improved data processing efficiency by 30\%. .}
+            \resumeItem{Designed and implemented secure and scalable RESTful APIs on AWS API Gateway, reducing response time by 20\%.}
+
+            % \resumeItem{Implemented an event-driven email notification system using Kafka and Spring Kafka, handling order notifications effortlessly.}
+            % \vspace{-12pt}           
+            \resumeItem{Containerized microservices using Docker and automated deployments with Jenkins CI/CD pipelines on AWS ECS.}
+            \resumeItem{Improved code quality and maintainability by establishing a rigorous test-driven development (TDD) process using JUnit and Mockito, increasing code coverage by 20\% and reducing bug incidence by 10\%.
+            }
+
+            
+      \resumeItemListEnd
+ % \vspace{-12pt}
+
+      \resumeProjectHeading
+      {\textbf{Associate Software Developer} $|$ \textbf{ClearTax} $|$ \footnotesize\emph{Bengaluru, India}\vspace{1pt}}{\small{Jul 2020 – Jun 2021}}
+        \resumeItemListStart 
+        
+      \resumeItem{Developed and maintained a scalable SaaS application using React and Node.js., ensuring robust performance and reliability.}
+      
+    % \resumeItem{Built responsive frontend components using React.js and efficiently managed application state using Redux.}
+\resumeItem{Collaborated with seniors to proactively identify and fix production bugs 10\% faster, increasing application uptime to 99.9\%.}
+% \resumeItem{Collaborated with senior engineers to proactively identify and resolve production bugs 10\% faster, increasing application uptime to 99.9\%.}
+ % \vspace{-12pt}
+
+% \resumeItem{Architected  reusable middleware to streamline ERP integrations with ClearTax APIs, reducing integration time by 40\%. }
+
+\resumeItem{Architected and built modular middleware solutions for ERP integration with ClearTax APIs, resulting in a 50\% improvement in integration scalability and maintainability.}
+\resumeItem{Leveraged code reviews and mentorship to enhance troubleshooting, debugging and problem-solving strategies. }
+      \resumeItemListEnd
+          
+    \resumeSubHeadingListEnd 
+
+% -------------------- SKILLS --------------------
+\vspace{-5pt}
+\section{Skills}
+ \begin{itemize}[leftmargin=0.05 in, label={}]
+    \small{
+     \resumeSkillPoint{\textbf{Programming}}{: Java, Spring Boot, Node.js, Python, JavaScript, TypeScript, React, HTML5, CSS3, SQL, PostgreSQL, MongoDB} \\
+
+     % \resumeSkillPoint{\textbf{Web Tech}}{: } \\
+    %  \resumeSkillPoint{\textbf{Databases}}{: PostgreSQL, Oracle, MySQL, MongoDB} \\
+     \resumeSkillPoint{\textbf{Cloud}}{: AWS (EC2, Lambda, API Gateway, S3, DynamoDB, RDS, ECS), GCP BigQuery} \\
+    %  \resumeSkillPoint{\textbf{Tools \& IDE}}{: Eclipse IDE, Visual Studio, IntelliJ, Maven, Postman, Jira, Lucid Chart} \\
+     \resumeSkillPoint{\textbf{Outros}}{: Agile, Scrum, Git, Jenkins, Terraform, Kafka, Docker, Jest, Junit, Kubernetes, DevOps, Linux, CI/CD} \\}
+ \end{itemize}
+
+
+% -------------------- CERTIFICATIONS --------------------
+\vspace{-5pt}
+\section{Professional Certifications}
+    \resumeItemListStart 
+    \small{
+        \resumeItem{AWS Certified Developer - Associate} \vspace{-3pt}
+        \resumeItem{GCP(Google Cloud) Certified Associate Cloud Engineer}\vspace{-3pt}
+        \resumeItem{Certified ScrumMaster}\vspace{-3pt}
+        }
+    \resumeItemListEnd
+
+% -------------------- PROJECTS --------------------
+% \vspace{-5pt}
+\section{Projects}
+\resumeSubHeadingListStart
+\resumeProjectHeading
+      {\textbf{Taxonomy — Patient Appointment Scheduling System} $|$ 
+      {\faIcon{link}}$ $
+      \underline{\href{https://medium.com/@siddartha.muppalla/provider-taxonomy-patient-appointment-scheduler-a1538c10f7c0}{Blog}}\vspace{1pt}}{\small{May 2023}}
+        \resumeItemListStart
+            \resumeItem{Designed an optimized system architecture for an application that manages provider data and scheduling operations at the University of Utah Hospital. Proposed the high-level system design solution to the team developing the real-world application.}
+            % \resumeItem{Proposed the high-level system design to the team developing the real-world application.}
+            \resumeItemListEnd
+            
+            \vspace{5pt}
+      \resumeProjectHeading
+      {\textbf{UAV Localization using Modified Penguin Search Optimization Algorithm} $|$ 
+      {\faIcon{link}}$ $
+      \underline{\href{https://doi.org/10.1016/j.compeleceng.2023.108757}{Publication}}\vspace{1pt}}{\small{Jun 2023}}
+        \resumeItemListStart
+            \resumeItem{Using Python, implemented UAV localization using Modified Penguin Search Optimization Algorithm}
+            \resumeItem{Achieved lowest estimation error when compared against other nature inspired algorithms.}
+      \resumeItemListEnd
+    \end{itemize}
+      
+
+\end{document}
