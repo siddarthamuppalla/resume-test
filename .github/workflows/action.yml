@@ -18,26 +18,32 @@ jobs:
           root_file: resume.tex
           latexmk_use_xelatex: true
 
-      - name: Upload a file to Google Drive
-        uses: willo32/google-drive-upload-action@v1
-        with:
-          target: resume.pdf
-          credentials: ${{ secrets.GOOGLE_DRIVE_API_KEY }}
-          parent_folder_id: ${{ secrets.GOOGLE_DRIVE_FOLDER_ID }}
-
-      # - name: Upload to gdrive
-      #   uses: mathisve/gdrive-upload-action@main
+      # - name: Upload a file to Google Drive
+      #   uses: willo32/google-drive-upload-action@v1
       #   with:
-      #     filename: resume.pdf
-      #     name: resume.pdf
-      #     folderId: ${{ secrets.GOOGLE_DRIVE_FOLDER_ID }}
+      #     target: resume.pdf
       #     credentials: ${{ secrets.GOOGLE_DRIVE_API_KEY }}
-      #     encoded: true
+      #     parent_folder_id: ${{ secrets.GOOGLE_DRIVE_FOLDER_ID }}
 
-          
-      # - name: Upload to Google Drive
-      #   uses: gdrive-org/upload-action@master
-      #   with:
-      #     serviceAccountKey: ${{ secrets.GOOGLE_DRIVE_API_KEY }}
-      #     source: main.pdf
-      #     destination: /LaTeXDocuments/main.pdf
+      # new fucntionaity test to check the folder creation
+      - name: Upload to gdrive
+        uses: adityak74/google-drive-upload-git-action@main
+        with:
+          credentials: ${{ secrets.GOOGLE_DRIVE_API_KEY }}
+          filename: "resume.pdf"
+          folderId: ${{ secrets.GOOGLE_DRIVE_FOLDER_ID }}
+          # name: "documentation.zip" # optional string
+          overwrite: "true" # optional boolean
+
+      - name: Make Directory Structure
+        run: |
+          mkdir -p w/x/y
+          date +%s > w/x/y/z
+      - name: Mirror Directory Structure
+        uses: adityak74/google-drive-upload-git-action@main
+        with:
+          credentials: ${{ secrets.GOOGLE_DRIVE_API_KEY }}
+          filename: w/x/y/z
+          folderId: ${{ secrets.GOOGLE_DRIVE_FOLDER_ID }}
+          overwrite: "true"
+          mirrorDirectoryStructure: "true"
