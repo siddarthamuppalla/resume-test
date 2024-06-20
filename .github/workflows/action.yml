@@ -39,12 +39,12 @@ jobs:
               run: |
                   mkdir -p ${{github.ref}}
                   mv resume.pdf ${{github.ref}}/
-                  
+
             - name: Mirror Directory Structure
               uses: adityak74/google-drive-upload-git-action@main
               with:
                   credentials: ${{ secrets.GOOGLE_DRIVE_API_KEY }}
-                  filename: w/x/y/z
+                  filename: ${{github.ref}}/resume.pdf
                   folderId: ${{ secrets.GOOGLE_DRIVE_FOLDER_ID }}
                   overwrite: "true"
                   mirrorDirectoryStructure: "true"
