@@ -2,48 +2,49 @@ name: LaTeX to Google Drive
 on: push
 
 jobs:
-  upload_to_drive:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Set up Git repository
-        uses: actions/checkout@v2
+    upload_to_drive:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Set up Git repository
+              uses: actions/checkout@v2
 
-      - name: Clean up LaTeX build files
-        run: |
-          rm -rf *.aux *.bbl *.blg *.log *.out *.toc
+            - name: Clean up LaTeX build files
+              run: |
+                  rm -rf *.aux *.bbl *.blg *.log *.out *.toc
 
-      - name: Compile LaTeX document
-        uses: xu-cheng/latex-action@v2
-        with:
-          root_file: resume.tex
-          latexmk_use_xelatex: true
+            - name: Compile LaTeX document
+              uses: xu-cheng/latex-action@v2
+              with:
+                  root_file: resume.tex
+                  latexmk_use_xelatex: true
 
-      # - name: Upload a file to Google Drive
-      #   uses: willo32/google-drive-upload-action@v1
-      #   with:
-      #     target: resume.pdf
-      #     credentials: ${{ secrets.GOOGLE_DRIVE_API_KEY }}
-      #     parent_folder_id: ${{ secrets.GOOGLE_DRIVE_FOLDER_ID }}
+            # - name: Upload a file to Google Drive
+            #   uses: willo32/google-drive-upload-action@v1
+            #   with:
+            #     target: resume.pdf
+            #     credentials: ${{ secrets.GOOGLE_DRIVE_API_KEY }}
+            #     parent_folder_id: ${{ secrets.GOOGLE_DRIVE_FOLDER_ID }}
 
-      # new fucntionaity test to check the folder creation
-      - name: Upload to gdrive
-        uses: adityak74/google-drive-upload-git-action@main
-        with:
-          credentials: ${{ secrets.GOOGLE_DRIVE_API_KEY }}
-          filename: "resume.pdf"
-          folderId: ${{ secrets.GOOGLE_DRIVE_FOLDER_ID }}
-          # name: "documentation.zip" # optional string
-          overwrite: "true" # optional boolean
+            # new fucntionaity test to check the folder creation
+            # - name: Upload to gdrive
+            #   uses: adityak74/google-drive-upload-git-action@main
+            #   with:
+            #       credentials: ${{ secrets.GOOGLE_DRIVE_API_KEY }}
+            #       filename: "resume.pdf"
+            #       folderId: ${{ secrets.GOOGLE_DRIVE_FOLDER_ID }}
+            #       # name: "documentation.zip" # optional string
+            #       overwrite: "true" # optional boolean
 
-      - name: Make Directory Structure
-        run: |
-          mkdir -p w/x/y
-          date +%s > w/x/y/z
-      - name: Mirror Directory Structure
-        uses: adityak74/google-drive-upload-git-action@main
-        with:
-          credentials: ${{ secrets.GOOGLE_DRIVE_API_KEY }}
-          filename: w/x/y/z
-          folderId: ${{ secrets.GOOGLE_DRIVE_FOLDER_ID }}
-          overwrite: "true"
-          mirrorDirectoryStructure: "true"
+            - name: Make Directory Structure
+              run: |
+                  mkdir -p ${{github.ref}}
+                  mv resume.pdf ${{github.ref}}/
+                  
+            - name: Mirror Directory Structure
+              uses: adityak74/google-drive-upload-git-action@main
+              with:
+                  credentials: ${{ secrets.GOOGLE_DRIVE_API_KEY }}
+                  filename: w/x/y/z
+                  folderId: ${{ secrets.GOOGLE_DRIVE_FOLDER_ID }}
+                  overwrite: "true"
+                  mirrorDirectoryStructure: "true"
