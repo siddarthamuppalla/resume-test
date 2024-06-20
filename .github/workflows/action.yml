@@ -18,12 +18,21 @@ jobs:
           root_file: resume.tex
           latexmk_use_xelatex: true
 
-      - name: Upload a file to Google Drive
-        uses: willo32/google-drive-upload-action@v1
+      # - name: Upload a file to Google Drive
+      #   uses: willo32/google-drive-upload-action@v1
+      #   with:
+      #     target: resume.pdf
+      #     credentials: ${{ secrets.GOOGLE_DRIVE_API_KEY }}
+      #     parent_folder_id: 13_U6kOxWw1plFlxYTozHQ1QgL0-ZaPWb
+
+      - name: Upload to gdrive
+        uses: mathisve/gdrive-upload-action@main
         with:
-          target: resume.pdf
+          filename: resume.pdf
+          name: resume.pdf
+          folderId: ${{ secrets.GOOGLE_DRIVE_FOLDER_ID }}
           credentials: ${{ secrets.GOOGLE_DRIVE_API_KEY }}
-          parent_folder_id: 13_U6kOxWw1plFlxYTozHQ1QgL0-ZaPWb
+          encoded: true
 
           
       # - name: Upload to Google Drive
