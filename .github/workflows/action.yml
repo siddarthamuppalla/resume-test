@@ -35,16 +35,22 @@ jobs:
             #       # name: "documentation.zip" # optional string
             #       overwrite: "true" # optional boolean
 
+            - name: Extract branch name
+              shell: bash
+              run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
+              id: extract_branch
+
+
             - name: Make Directory Structure
               run: |
-                  mkdir -p ${{github.ref.heads}}
-                  mv resume.pdf ${{github.ref.heads}}/
+                  mkdir -p ${{ steps.extract_branch.outputs.branch }}
+                  mv resume.pdf ${{ steps.extract_branch.outputs.branch }}/
 
             - name: Mirror Directory Structure
               uses: adityak74/google-drive-upload-git-action@main
               with:
                   credentials: ${{ secrets.GOOGLE_DRIVE_API_KEY }}
-                  filename: ${{github.ref.heads}}/resume.pdf
+                  filename: ${{ steps.extract_branch.outputs.branch }}/resume.pdf
                   folderId: ${{ secrets.GOOGLE_DRIVE_FOLDER_ID }}
                   overwrite: "true"
                   mirrorDirectoryStructure: "true"
