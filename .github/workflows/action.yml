@@ -1,4 +1,4 @@
-name: LaTeX to Google Drive
+name: Resume Generation
 on: push
 
 jobs:
@@ -12,41 +12,39 @@ jobs:
               run: |
                   rm -rf *.aux *.bbl *.blg *.log *.out *.toc
 
+            - name: Cache LaTeX build files
+              id: cache-latex
+              uses: actions/cache@v2
+              with:
+                path: |
+                  ~/.texlive
+                  ./build
+                key: ${{ runner.os }}-latex-${{ hashFiles('**/*.tex') }}
+                restore-keys: |
+                  ${{ runner.os }}-latex-
+
+            - name: Install LaTeX
+              run: |
+                sudo apt-get update
+                sudo apt-get install -y texlive-full
+
             - name: Compile LaTeX document
               uses: xu-cheng/latex-action@v2
               with:
                   root_file: resume.tex
                   latexmk_use_xelatex: true
 
-            # - name: Upload a file to Google Drive
-            #   uses: willo32/google-drive-upload-action@v1
-            #   with:
-            #     target: resume.pdf
-            #     credentials: ${{ secrets.GOOGLE_DRIVE_API_KEY }}
-            #     parent_folder_id: ${{ secrets.GOOGLE_DRIVE_FOLDER_ID }}
-
-            # new fucntionaity test to check the folder creation
-            # - name: Upload to gdrive
-            #   uses: adityak74/google-drive-upload-git-action@main
-            #   with:
-            #       credentials: ${{ secrets.GOOGLE_DRIVE_API_KEY }}
-            #       filename: "resume.pdf"
-            #       folderId: ${{ secrets.GOOGLE_DRIVE_FOLDER_ID }}
-            #       # name: "documentation.zip" # optional string
-            #       overwrite: "true" # optional boolean
-
             - name: Extract branch name
               shell: bash
               run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
               id: extract_branch
-
 
             - name: Make Directory Structure
               run: |
                   mkdir -p ${{ steps.extract_branch.outputs.branch }}
                   mv resume.pdf ${{ steps.extract_branch.outputs.branch }}/
 
-            - name: Mirror Directory Structure
+            - name: Upload file to Google Drive
               uses: adityak74/google-drive-upload-git-action@main
               with:
                   credentials: ${{ secrets.GOOGLE_DRIVE_API_KEY }}
