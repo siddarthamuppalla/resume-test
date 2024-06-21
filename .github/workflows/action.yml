@@ -23,10 +23,10 @@ jobs:
                 restore-keys: |
                   ${{ runner.os }}-latex-
 
-            - name: Install LaTeX
-              run: |
-                sudo apt-get update
-                sudo apt-get install -y texlive-full
+            # - name: Install LaTeX
+            #   run: |
+            #     sudo apt-get update
+            #     sudo apt-get install -y texlive-full
 
             - name: Compile LaTeX document
               uses: xu-cheng/latex-action@v2
